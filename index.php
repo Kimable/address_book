@@ -16,6 +16,31 @@
 
     //echo json_encode($data)
 
+    // Export Json File
+    $json_file = 'address-list.json';
+    $handle = fopen($json_file, 'r+'); 
+    fwrite($handle, json_encode($data));
+
+    // Export XML
+    $xml ='<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<address_list>';
+
+    foreach($data as $address){
+      $xml .= '<address>';
+      $xml .= "<title>".$address['last_name']."'s address". "</title>";
+      $xml .= '<firstName>' .$address['first_name']. '</firstName>';
+      $xml .= '<lastName>' .$address['last_name']. '</lastName>';
+      $xml .= '<email>' .$address['email']. '</email>';
+      $xml .= '<street>' .$address['street']. '</street>';
+      $xml .= '<zipCode>' .$address['zip_code']. '</zipCode>';
+      $xml .= '<city>' .$address['city']. '</city>';
+      $xml .= '</address>';
+    }
+
+    $xml .= '</address_list>';
+
+    $xml_handle = fopen('address-list.xml', 'r+');
+    fwrite($xml_handle, $xml);
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +75,11 @@
 
         <?php } ?>
       </table>
+
+      <div class="file section right">
+        <a class='btn pink' href="address-list.json" download>Export as JSON</a>
+        <a class='btn grey' href="address-list.xml" download>Export as XML</a>
+      </div>
     </div>
   </div>
 
