@@ -1,6 +1,6 @@
 <?php
 
-   require('config.php');
+   require('config/config.php');
 
    $fisrtName = $lastName = $email = $street = $zipCode = $city = '';
    $errors = array('first_name' => '', 'last_name'=> '', 'email'=>'');

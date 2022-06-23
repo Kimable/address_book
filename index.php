@@ -1,7 +1,7 @@
 <?php
-   require('config.php');
+   require('config/config.php');
 
-   $query_data = 'SELECT first_name, last_name, email, street, zip_code, city FROM address';
+   $query_data = 'SELECT id, first_name, last_name, email, street, zip_code, city FROM address';
 
    $query_result = mysqli_query($db_connection, $query_data);
   
@@ -26,6 +26,7 @@
   <div class="address-list-container container section">
     <div class="row">
       <table>
+        <h3>Address List</h3>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
@@ -33,6 +34,7 @@
           <th>Street</th>
           <th>Zip Code</th>
           <th>City</th>
+          <th></th>
         </tr>
         <?php foreach($data as $item) { ?>
 
@@ -43,6 +45,7 @@
             <td><?php echo htmlspecialchars($item['street']); ?></td>
             <td><?php echo htmlspecialchars($item['zip_code']); ?></td>
             <td><?php echo htmlspecialchars($item['city']); ?></td>
+            <td><a href="detail.php?id=<?php echo $item['id'] ?>">More Info</a></td>
           </tr>
 
         <?php } ?>
