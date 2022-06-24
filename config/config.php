@@ -1,7 +1,7 @@
 <?php
 
-    $db_connection = mysqli_connect('localhost', 'root', '','address_book');
+$db_connection = mysqli_connect('localhost', 'root', '', 'address_book');
 
-    if(!$db_connection){
-        echo 'Connection Error: ' . mysqli_connect_error();
-    }
+if (!$db_connection) {
+    echo 'Connection Error: ' . mysqli_connect_error();
+}
